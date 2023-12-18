@@ -1,0 +1,14 @@
+---
+title: "Final Assignment"
+author: "Vaishnavi Behl"
+date: "2023-12-18"
+output: html_document
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(echo = FALSE) 
+```
+
+
+## Appendix: All code in this assignment
+```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE} 
