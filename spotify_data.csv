@@ -1,0 +1,101 @@
+"Rolling_Stones_Rank","RS_Rank_Year","Artist","Spotify_ID","Popularity","Followers","Genres","Spotify_Rank","Change_in_Rank","Spotify_Rank_Year"
+88,2010,"Jay-Z","3nFkdlSjzX9mRTtwJOzDYB",82,8800017,"east coast hip hop, gangster rap, hip hop, pop rap, rap",5,83,2023
+83,2010,"Eminem","7dGJo4pcD2V6oG8kP0tJRR",90,80340870,"detroit hip hop, hip hop, rap",1,82,2023
+92,2010,"Guns n’ Roses","3qm84nBOXUEQ2vnTfUTTFC",78,30303017,"glam metal, hard rock, rock",13,79,2023
+86,2010,"Tupac Shakur","1ZwdS5xdxEREPySFridCfh",78,16959142,"g funk, gangster rap, hip hop, rap, west coast rap",15,71,2023
+97,2010,"R.E.M.","4KWTAlx2RvbpseOGMEmROg",72,4321283,"alternative rock, athens indie, permanent wave, rock",33,64,2023
+73,2010,"Radiohead","4Z8W4fKeB5YxbusRsdQVPb",80,9204428,"alternative rock, art rock, melancholia, oxford indie, permanent wave, rock",10,63,2023
+82,2010,"Creedence Clearwater Revival","3IYUhFvPQItj6xySrBmZkd",78,6277737,"album rock, classic rock, country rock, rock, southern rock, swamp rock",19,63,2023
+72,2010,"AC/DC","711MCceyCBcFnzjGY4Q7Un",79,27776214,"australian rock, hard rock, rock",11,61,2023
+85,2010,"Black Sabbath","5M52tdBnJaKSvOpJGz8mfZ",72,7466123,"album rock, alternative metal, birmingham metal, classic rock, hard rock, metal, rock, stoner rock, uk doom metal",31,54,2023
+95,2010,"Lynyrd Skynyrd","4MVyzYMgTwdP7Z49wAZHx0",70,4958124,"album rock, classic rock, hard rock, rock, southern rock",41,54,2023
+61,2010,"Metallica","2ye2Wgw4gimLv2eAKyk1NB",80,26478701,"hard rock, metal, old school thrash, rock, thrash metal",8,53,2023
+75,2010,"Eagles","0ECwFtbIWEVNwjlrfc6xoL",76,10243408,"album rock, classic rock, heartland rock, mellow gold, rock, soft rock, yacht rock",22,53,2023
+52,2010,"Queen","1dfeR4HaWDbWqFHLkxsg1d",84,49027734,"classic rock, glam rock, rock",2,50,2023
+100,2010,"Talking Heads","2x9SpqnPi8rlE9pjHBwmSC",67,2321854,"alternative rock, art punk, dance rock, funk rock, new wave, permanent wave, post-punk, rock, zolo",51,49,2023
+91,2010,"Tom Petty","2UZMlIwnkgAEDBsw1Rejkn",70,2427497,"album rock, classic rock, hard rock, heartland rock, mellow gold, rock, singer-songwriter, soft rock",43,48,2023
+49,2010,"Elton John","3PhoLpVuITZKcymswpck5b",83,12722160,"glam rock, mellow gold, piano rock, rock",4,45,2023
+70,2010,"The Police","5NGO30tJxFlKixkPSgXcFE",75,5818844,"album rock, classic rock, permanent wave, rock",26,44,2023
+90,2010,"Carlos Santana","6GI52t8N5F02MxU0g5U69P",69,3225619,"blues rock, classic rock, mexican classic rock",46,44,2023
+56,2010,"Dr. Dre","6DPYiyq5kWVQS4RGwxzPC7",78,11012473,"g funk, gangster rap, hip hop, rap, west coast rap",17,39,2023
+51,2010,"Pink Floyd","0k17h0D3J5VfsdmQ1iZtE9",78,19909658,"album rock, art rock, classic rock, progressive rock, psychedelic rock, rock, symphonic rock",14,37,2023
+94,2010,"Nine Inch Nails","0X380XXQSNBYuleKzav5UO",64,2466533,"alternative metal, alternative rock, cyberpunk, electronic rock, industrial, industrial metal, industrial rock, nu metal, post-grunge, rock",60,34,2023
+59,2010,"Aerosmith","7Ey4PD4MYsKc5I2dolUwbH",74,13975850,"album rock, classic rock, hard rock, rock",28,31,2023
+35,2010,"Michael Jackson","3fMbdgg4jU18AjLCKBhRSm",81,29671229,"r&b, soul",6,29,2023
+84,2010,"James Taylor","0vn7UBvSQECKJm2817Yf1P",66,2512735,"classic rock, folk, folk rock, heartland rock, mellow gold, singer-songwriter, soft rock",55,29,2023
+77,2010,"Beastie Boys","03r4iKL2g2442PT9n2UKsx",67,2686812,"alternative rock, east coast hip hop, golden age hip hop, hip hop, old school hip hop, rap, rap rock, rock",50,27,2023
+36,2010,"Madonna","6tbjWDEIzxoDsBA1FuhfPW",79,7429935,"dance pop, pop",12,24,2023
+98,2010,"Curtis Mayfield","2AV6XDIs32ofIJhkkDevjm",57,1072337,"chicago soul, classic soul, funk, soul",74,24,2023
+30,2010,"Nirvana","6olE6TJLqED3rqDCT0FyPh",80,18680331,"grunge, permanent wave, rock",9,21,2023
+68,2010,"The Temptations","3RwQ26hR2tJtA8F9p2n7jG",67,2853625,"memphis soul, motown, soul",49,19,2023
+63,2010,"Tina Turner","1zuJe6b1roixEKMOtyrEak",69,3867630,"soft rock",45,18,2023
+39,2010,"David Bowie","0oSGxfWSnnOXhD2fKuz2Gy",76,10080084,"art rock, classic rock, glam rock, permanent wave, rock",23,16,2023
+55,2010,"Eric Clapton","6PAt558ZEZl0DmdXlnjMgD",70,5649691,"album rock, blues rock, classic rock, electric blues, mellow gold, rock, singer-songwriter, soft rock",39,16,2023
+81,2010,"The Drifters","1FqqOl9itIUpXr4jZPIVoT",63,508091,"adult standards, doo-wop, rock-and-roll, rockabilly, soul",65,16,2023
+74,2010,"Hank Williams","2dyeCWctcFRt3Pha76ONgb",64,1576024,"country, country rock, outlaw country",61,13,2023
+38,2010,"John Lennon","4x1nvY2FN8jxqAFA0DA02H",75,5806520,"classic rock, rock",27,11,2023
+79,2010,"The Four Tops","7fIvjotigTGWqjIz6EP1i4",62,1093692,"classic soul, disco, motown, quiet storm, soul",68,11,2023
+93,2010,"Booker T. and the MGs","2vDV0T8sxx2ENnKXds75e5",55,286663,"blues, classic soul, instrumental funk, instrumental soul, memphis soul, soul, southern soul",84,9,2023
+66,2010,"Al Green","3dkbV4qihUeMsqN4vBGg93",65,1896030,"classic soul, funk, memphis soul, soul, soul blues, southern soul",58,8,2023
+41,2010,"The Doors","22WZ7M8sxp5THdruNY3gXt",71,7602616,"acid rock, album rock, classic rock, hard rock, psychedelic rock, rock",34,7,2023
+42,2010,"Van Morrison","44NX2ffIYHr6D4n7RaZF7A",71,3048004,"classic rock, folk, folk rock, heartland rock, mellow gold, rock, singer-songwriter, soft rock",35,7,2023
+65,2010,"The Kinks","1SQRv42e4PjEYfPhS0Tk9E",64,2510376,"album rock, art rock, british invasion, classic rock, folk rock, glam rock, protopunk, psychedelic rock, rock, singer-songwriter",59,6,2023
+99,2010,"Carl Perkins","5hIClg6noTaCzMu2s5wp4f",44,173045,"rock-and-roll, rockabilly",97,2,2023
+22,2010,"U2","51Blml2LZPmy7TTiAg47vQ",77,11808255,"irish rock, permanent wave, rock",21,1,2023
+67,2010,"Cream","74oJ4qxwOZvX6oSsu1DGnw",62,2280776,"album rock, blues rock, british blues, classic rock, folk rock, hard rock, psychedelic rock, rock, singer-songwriter, supergroup",66,1,2023
+40,2010,"Simon and Garfunkel","70cRZdQywnSFp9pnc2WTCE",70,4970618,"classic rock, folk, folk rock, melancholia, mellow gold, rock, soft rock",40,0,2023
+96,2010,"Diana Ross and the Supremes","0rXI0q8Cahq6numvPlloaq",45,78950,"classic girl group, motown",96,0,2023
+23,2010,"Bruce Springsteen","3eqjTLE0HfPfh78zjh6TqT",76,6026885,"heartland rock, mellow gold, permanent wave, rock, singer-songwriter",24,-1,2023
+31,2010,"Johnny Cash","6kACVPfCOnqzgfEF5ryl0x",72,6097263,"arkansas country, outlaw country, rock",32,-1,2023
+1,2010,"The Beatles","3WrFJ7ztbogyGnTHbHJFl2",83,26771669,"british invasion, classic rock, merseybeat, psychedelic rock, rock",3,-2,2023
+15,2010,"Stevie Wonder","7guDJrEfX3qb6FEbdPA5qi",78,6325836,"motown, soul",18,-3,2023
+3,2010,"Elvis Presley","43ZHCT0cAZBISjO8DG9PnE",81,9026630,"rock-and-roll, rockabilly",7,-4,2023
+89,2010,"The Yardbirds","2lxX1ivRYp26soIavdG9bX",46,940747,"album rock, blues rock, british blues, british invasion, classic rock, country rock, folk rock, hard rock, psychedelic rock, rock, singer-songwriter",94,-5,2023
+57,2010,"Grateful Dead","4TMHGUX5WI7OOm53PqSDAT",63,1768726,"cosmic american, jam band, psychedelic rock",64,-7,2023
+80,2010,"Elvis Costello","2BGRfQgtzikz1pzAD0kaEn",54,548051,"new wave, new wave pop, permanent wave, power pop, singer-songwriter",88,-8,2023
+11,2010,"Bob Marley","2QsynagSdAqZj3U9HgDzjD",77,11834990,"reggae, roots reggae",20,-9,2023
+14,2010,"Led Zeppelin","36QJpDe2go2KgaRleHCDTp",75,13968286,"album rock, classic rock, hard rock, rock",25,-11,2023
+69,2010,"Jackie Wilson","4VnomLtKTm9Ahe1tZfmZju",56,439279,"chicago soul, classic soul, rock-and-roll, soul",80,-11,2023
+4,2010,"The Rolling Stones","22bE4uQ6baNwSHPVcDxLCe",78,13612997,"album rock, british invasion, classic rock, rock",16,-12,2023
+18,2010,"Marvin Gaye","3koiLjNrgRTNbOwViDipeA",73,5217168,"classic soul, motown, neo soul, northern soul, quiet storm, soul",30,-12,2023
+71,2010,"Frank Zappa","6ra4GIOgCZQZMOaUECftGN",55,903800,"art rock, blues rock, experimental, instrumental rock, jazz fusion, jazz rock, progressive rock, psychedelic rock, symphonic rock, zolo",83,-12,2023
+87,2010,"Gram Parsons","1KA3WXYMPLxomNuoE22LYd",38,136739,"alternative country, cosmic american, country rock, folk, folk rock, roots rock, singer-songwriter",99,-12,2023
+48,2010,"Run-DMC","3CQIn7N5CuRDP8wEI7FiDA",64,1311291,"east coast hip hop, golden age hip hop, hip hop, old school hip hop, queens hip hop, rap",62,-14,2023
+21,2010,"Otis Redding","60df5JBRRPcnSpsIMxxwQm",71,2177046,"classic soul, memphis soul, soul, soul blues, southern soul, vocal jazz",36,-15,2023
+76,2010,"The Shirelles","0x83OBqixqdCHnStP5VMcn",51,298466,"classic girl group, classic soul, doo-wop, motown, rock-and-roll, soul",91,-15,2023
+78,2010,"The Stooges","4BFMTELQyWJU1SwqcXMBm3",49,601926,"alternative rock, detroit rock, permanent wave, protopunk, punk",93,-15,2023
+12,2010,"The Beach Boys","3oDbviiivRWhXwIE8hxkVV",74,4360393,"baroque pop, classic rock, folk rock, mellow gold, psychedelic rock, rock, sunshine pop",29,-17,2023
+27,2010,"Prince","5a2EaR3hamoenG9rDuVn8j",69,7123452,"funk, funk rock, minneapolis sound, rock, synth funk",44,-17,2023
+53,2010,"The Allman Brothers Band","4wQ3PyMz3WwJGI5uEqHUVR",61,1563102,"album rock, blues rock, classic rock, country rock, folk rock, hard rock, heartland rock, jam band, mellow gold, rock, singer-songwriter, soft rock, southern rock",70,-17,2023
+37,2010,"Roy Orbison","0JDkhL4rjiPNEp92jAgJnS",66,1928639,"adult standards, classic rock, folk rock, mellow gold, rock-and-roll, rockabilly, singer-songwriter",56,-19,2023
+62,2010,"Joni Mitchell","5hW4L92KnC6dX9t7tYM4Ve",55,1366775,"canadian singer-songwriter, folk, folk rock, singer-songwriter",81,-19,2023
+28,2010,"The Clash","3RGLhK1IP9jnYFH4BRFJBS",68,2641369,"alternative rock, permanent wave, punk, rock",48,-20,2023
+50,2010,"The Band","4vpDg7Y7fU982Ds30zawDA",59,1073212,"blues rock, classic canadian rock, classic rock, cosmic american, country rock, folk, folk rock, heartland rock, jam band, mellow gold, rock, roots rock, southern rock, swamp rock",72,-22,2023
+46,2010,"Janis Joplin","4NgfOZCL9Ml67xzM0xzIvC",61,3243055,"album rock, classic rock, hard rock, psychedelic rock, rock",69,-23,2023
+29,2010,"The Who","67ea9eGLXYMsO2eYQRui3w",66,5250967,"album rock, british invasion, classic rock, hard rock, rock",54,-25,2023
+60,2010,"The Sex Pistols","1u7kkVrr14iBvrpYnZILJR",53,1736919,"alternative rock, punk, rock",89,-29,2023
+26,2010,"The Ramones","1co4F2pPNH8JjTutZkmgSm",65,2543649,"alternative rock, early us punk, permanent wave, punk, rock",57,-31,2023
+47,2010,"Patti Smith","0vYkHhJ48Bs3jWcvZXvOrP",56,1071430,"art punk, permanent wave, protopunk, singer-songwriter",78,-31,2023
+5,2010,"Chuck Berry","293zczrfYafIItmnmM3coR",71,1918432,"blues, blues rock, classic rock, rock, rock-and-roll, rockabilly, soul",37,-32,2023
+43,2010,"Sly and the Family Stone","5m8H6zSadhu1j9Yi04VLqD",57,1000521,"classic soul, funk, funk rock, p funk, psychedelic soul, soul, southern soul",75,-32,2023
+9,2010,"Aretha Franklin","7nwUJBm0HE4ZxD3f5cy5ok",70,3267873,"classic soul, jazz blues, memphis soul, neo soul, soul, southern soul, vocal jazz",42,-33,2023
+2,2010,"Bob Dylan","74ASZWbe4lXaubB36ztrGX",70,6327849,"classic rock, country rock, folk, folk rock, rock, roots rock, singer-songwriter",38,-36,2023
+64,2010,"Phil Spector","3jVMgT4X7YeuYE4aludcmE",33,27865,"brill building pop",100,-36,2023
+16,2010,"Sam Cooke","6hnWRPzGGKiapVX1UCdEAC",67,1563779,"classic soul, soul, vocal jazz",53,-37,2023
+34,2010,"Neil Young","6v8FB84lnmJs434UJf2Mrm",59,2839093,"canadian singer-songwriter, classic canadian rock, classic rock, folk rock, mellow gold, permanent wave, rock, roots rock, singer-songwriter",71,-37,2023
+54,2010,"Howlin’ Wolf","0Wxy5Qka8BN9crcFkiAxSR",50,500577,"acoustic blues, blues, chicago blues, delta blues, harmonica blues, memphis blues, traditional blues",92,-38,2023
+33,2010,"The Everly Brothers","4ACplpEqD6JIVgKrafauzs",58,905281,"adult standards, folk rock, mellow gold, rock-and-roll, rockabilly, sunshine pop",73,-40,2023
+58,2010,"Parliament Funkadelic","6XswoC68grx55in1WQnJ7E",42,26059,"afrofuturism",98,-40,2023
+6,2010,"Jimi Hendrix","776Uo845nYHJpNaStv1Ds4",68,6496767,"acid rock, album rock, alternative rock, classic rock, hard rock, proto-metal, psychedelic rock, rock",47,-41,2023
+10,2010,"Ray Charles","1eYhYunlNJlDoQhtYBvPsi",67,2163392,"classic soul, jazz blues, piano blues, soul, soul blues, vocal jazz",52,-42,2023
+44,2010,"Public Enemy","6Mo9PoU6svvhgEum7wh2Nd",54,1048993,"conscious hip hop, east coast hip hop, golden age hip hop, hardcore hip hop, hip hop, old school hip hop, political hip hop",86,-42,2023
+45,2010,"The Byrds","1PCZpxHJz7WAMF8EEq8bfc",54,969561,"album rock, beatlesque, blues rock, classic rock, cosmic american, country rock, folk, folk rock, heartland rock, mellow gold, psychedelic rock, rock, soft rock",87,-42,2023
+32,2010,"Smokey Robinson and the Miracles","6TKOZZDd5uV5KnyC5G4MUt",56,1178536,"classic soul, motown, quiet storm, soul",77,-45,2023
+19,2010,"The Velvet Underground","1nJvji2KIlWSseXRSlNYsC",62,1841163,"alternative rock, melancholia, permanent wave, protopunk, rock",67,-48,2023
+24,2010,"Jerry Lee Lewis","2zyz0VJqrDXeFDIyrfVXSo",56,868721,"piano rock, rock-and-roll, rockabilly",79,-55,2023
+7,2010,"James Brown","7GaxyUddsPok8BuhxN6OUW",63,2101031,"funk, soul",63,-56,2023
+13,2010,"Buddy Holly","3wYyutjgII8LJVVOLrGI0D",56,1274874,"classic rock, folk rock, mellow gold, rock-and-roll, rockabilly, singer-songwriter",76,-63,2023
+25,2010,"Fats Domino","09C0xjtosNAIXP36wTnWxd",53,527772,"louisiana blues, motown, new orleans blues, piano blues, rock-and-roll, rockabilly",90,-65,2023
+17,2010,"Muddy Waters","4y6J8jwRAwO4dssiSmN91R",54,1261673,"blues, blues rock, chicago blues, classic rock, electric blues, soul, traditional blues",85,-68,2023
+8,2010,"Little Richard","4xls23Ye9WR9yy3yYMpAMm",55,906993,"blues, rock-and-roll, rockabilly, soul",82,-74,2023
+20,2010,"Bo Diddley","2bmixwMZXlkl2sbIbOfviq",45,309062,"acoustic blues, blues, chicago blues, electric blues, rock-and-roll, rockabilly, traditional blues",95,-75,2023

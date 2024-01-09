@@ -5,10 +5,733 @@ date: "2023-12-18"
 output: html_document
 ---
 
+# Link to my public repo: [Final Assignment Repo](https://github.com/VaishnaviBehl/final_assignment)
+
+
+# Introduction 
+This study assesses the longevity of music created by artists featured in Rolling Stone Magazine's list of the 100 greatest musical artists of 2010. By integrating data from Rolling Stone, Spotify’s Web API, and Wikipedia, our research aims to identify trends in musical genres and the attributes that contribute to an artist's enduring popularity. Our objective is to determine if there are observable trends in the shifting popularity of various genres, and to explore whether certain musical characteristics (such as positive versus negative themes, danceability, or the inclusion of spoken word) influence an artist's popularity.
+
+
 ```{r setup, include=FALSE} 
 knitr::opts_chunk$set(echo = FALSE) 
 ```
 
+```{r}
+# The following libraries are essential for web scraping, data manipulation, and visualization.
 
-## Appendix: All code in this assignment
+library(httr)      # For handling HTTP requests
+library(jsonlite)  # For JSON parsing
+library(dplyr)     # Data manipulation
+library(RSelenium) # Web scraping with Selenium
+library(rvest)     # Web scraping without JavaScript rendering
+library(spotifyr)  # Interfacing with Spotify Web API
+library(ggplot2)   # Data visualization
+library(readr)     # Reading and writing data
+library(tidyverse) # An umbrella package that includes dplyr, ggplot2 and other useful packages
+library(stringr)   # String manipulation
+library(ggrepel)   # Improved text positioning for ggplot2
+library(reshape2)  # Reshaping data
+library(corrplot)  # Visualization of correlation matrices
+```
+
+# Data 
+The data collection process encompassed several stages. Initially, we extracted the names and rankings of artists from Rolling Stone's 2010 list of the 100 greatest artists using R Selenium, and stored this data in a CSV file. This provided a foundational reference for the artists' standings in 2010.
+
+Subsequently, we utilized the Spotify Web API to acquire up-to-date information about these artists, encompassing their popularity, follower counts, and musical genres. To safeguard our secret API key, we established a local environment file. The use of Spotify artist IDs was crucial in accessing this data, as Spotify's API operates with these unique identifiers. Due to the unavailability of historical data on Spotify, we relied on current popularity and follower metrics to approximate the artists' rankings as of 2023.
+
+For an in-depth analysis, we chose 30 artists, segmented into three groups: 10 with the most significant increase in rank, 10 who maintained consistent ranks, and 10 who exhibited the most substantial decrease. In addition, we extracted data from Wikipedia regarding the best-selling artists, including details of their first charted record, genre, and sales figures.
+
+
+```{r}
+# Initialize RSelenium driver
+ #rD <- rsDriver(browser=c("firefox"), port = free_port(random = TRUE), chromever = NULL)
+ #driver <- rD$client
+
+# Navigate to the Rolling Stone website
+ #url <- "https://www.rollingstone.com/music/music-lists/100-greatest-artists-147446/"
+ #driver$navigate(url)
+```
+
+```{r}
+# Handling Cookie Popups (if any)
+
+# The following code waits for the popup and clicks the 'Reject All' option.
+
+# Wait for the cookie popup to load
+#Sys.sleep(2) 
+
+# Use JavaScript to click the "Reject All" button
+#reject_button_js <- "document.querySelector('#onetrust-reject-all-handler').click();"
+#driver$executeScript(reject_button_js)
+
+# Wait for the action to complete
+#Sys.sleep(2)
+```
+
+```{r}
+# Data Scraping 
+
+# Initialize vectors to store data
+ #artists_100_51 <- c()
+ #ranks_100_51 <- c()
+ #artists_50_1 <- c()
+ #ranks_50_1 <- c()
+
+# Scrape data for ranks 100-51 using XPaths
+ #artist_xpath_100_51 <- "//*[@id='pmc-gallery-vertical']/div[1]//article/h2"
+ #rank_xpath_100_51 <- "//*[@id='pmc-gallery-vertical']/div[1]//article/span[2]"
+
+ #artist_nodes_100_51 <- driver$findElements(using = 'xpath', artist_xpath_100_51)
+ #rank_nodes_100_51 <- driver$findElements(using = 'xpath', rank_xpath_100_51)
+
+ #artists_100_51 <- c()
+ #ranks_100_51 <- c()
+
+#for(node in artist_nodes_100_51) {
+    #artist <- node$getElementText()[[1]]
+    #artists_100_51 <- c(artists_100_51, artist)
+#}
+
+#for(node in rank_nodes_100_51) {
+    #rank <- node$getElementText()[[1]]
+    #ranks_100_51 <- c(ranks_100_51, rank)
+ #}
+
+ # Combine the scraped data for ranks 100-51 into a single dataframe
+ #artists_100_51_data <- data.frame(Rank = ranks_100_51, Artist = artists_100_51)
+
+# Use JavaScript to click the "Load More" button directly
+#load_more_xpath <- "/html/body/div[5]/main/div[2]/div[1]/div/article/div[3]/div[2]/div[2]/a"
+#elements <- driver$findElements(using = 'xpath', load_more_xpath)
+  #driver$executeScript("arguments[0].click();", list(elements[[1]]))
+  #Sys.sleep(5)  
+
+# Check for popup and close it if present
+#popup_xpath <- "//*[@id='onesignal-slidedown-cancel-button']"
+#popup_elements <- driver$findElements(using = 'xpath', popup_xpath)
+
+ #if (length(popup_elements) > 0) {
+  #driver$executeScript("arguments[0].click();", list(popup_elements[[1]]))
+  #Sys.sleep(2)  # Wait for the popup to close
+ #}
+
+# Wait for any dynamic content to load
+ #Sys.sleep(2)
+
+# Scrape data for ranks 50-1
+ #artist_xpath_50_1 <- "//*[@id='pmc-gallery-vertical']/div[2]//article/h2"
+ #rank_xpath_50_1 <- "//*[@id='pmc-gallery-vertical']/div[2]//article/span[2]"
+
+ #artist_nodes_50_1 <- driver$findElements(using = 'xpath', artist_xpath_50_1)
+ #rank_nodes_50_1 <- driver$findElements(using = 'xpath', rank_xpath_50_1)
+
+ #artists_50_1 <- c()
+ #ranks_50_1 <- c()
+
+ #for(node in artist_nodes_50_1) {
+  #artist <- node$getElementText()[[1]]
+   #artists_50_1 <- c(artists_50_1, artist)
+#}
+
+#for(node in rank_nodes_50_1) {
+    #rank <- node$getElementText()[[1]]
+    #ranks_50_1 <- c(ranks_50_1, rank)
+#}
+
+# Combine the scraped data for ranks 50-1 into a dataframe
+#artists_50_1_data <- data.frame(Rank = ranks_50_1, Artist = artists_50_1)
+
+# Combine both parts of the data into one dataframe
+#rolling_stones_data <- rbind(artists_100_51_data, artists_50_1_data)
+#names(rolling_stones_data) <- c("Rolling_Stones_Rank", "Artist")
+
+```
+
+```{r}
+# Replace "Parliament and Funkadelic" with "Parliament Funkadelic" in the Artist column
+#rolling_stones_data$Artist <- gsub("Parliament and Funkadelic", "Parliament Funkadelic", #rolling_stones_data$Artist)
+
+# Add a new column 'RS_Rank_Year' with the value 2010 for all rows
+#rolling_stones_data$RS_Rank_Year <- 2010
+ 
+# Reorder columns
+#rolling_stones_data <- rolling_stones_data[c("Rolling_Stones_Rank", "RS_Rank_Year", "Artist")]
+
+# Close RSelenium server
+#driver$close()
+#rD$server$stop()
+
+# Saving output in a CSV file
+#write.csv(rolling_stones_data, "rolling_stone_artists.csv", row.names = FALSE)
+```
+
+```{r}
+full_artist_data <- read.csv("rolling_stone_artists.csv", stringsAsFactors = FALSE, check.names = FALSE)
+```
+
+```{r}
+# Read the environment file
+ #readRenviron("/Users/vaishnavi/Documents/MyEnvirons/spotify.env")
+
+# Get Spotify Access Token
+
+ #Sys.setenv(SPOTIFY_CLIENT_ID = Sys.getenv("Client_ID"))
+ #Sys.setenv(SPOTIFY_CLIENT_SECRET = Sys.getenv("Client_Secret"))
+
+# Get Spotify access token
+ #access_token <- get_spotify_access_token()
+```
+
+```{r}
+# Use Spotify's search API to retrieve artist IDs for the artists in the Rolling Stone list.
+
+ #get_artist_id <- function(artist_name, access_token) {
+    #search_url <- paste0("https://api.spotify.com/v1/search?q=", URLencode(artist_name), "&type=artist&limit=1")
+    #response <- GET(url = search_url, add_headers(Authorization = paste("Bearer", access_token)))
+    #content <- content(response, "parsed")
+    
+    #if (length(content$artists$items) > 0) {
+        #return(content$artists$items[[1]]$id)
+    #} else {
+        #return(NA)
+    #}
+ #}
+
+ #full_artist_data$Spotify_ID <- sapply(full_artist_data$Artist, function(artist) {
+    #get_artist_id(artist, access_token)
+#})
+```
+
+
+```{r}
+# Fetch Artist Data
+ #get_artist_data <- function(artist_id, access_token) {
+    #artist_url <- paste0("https://api.spotify.com/v1/artists/", artist_id)
+    #response <- GET(url = artist_url, add_headers(Authorization = paste("Bearer", access_token)))
+    
+    # Handle rate limiting
+    #while (status_code(response) == 429) {
+        #retry_after <- as.numeric(headers(response)[["retry-after"]])
+        #Sys.sleep(retry_after + 1) 
+        #response <- GET(url = artist_url, add_headers(Authorization = paste("Bearer", access_token)))
+    #}
+    
+    #content <- content(response, "parsed")
+    #popularity <- ifelse(!is.null(content$popularity), content$popularity, NA)
+    #followers <- ifelse(!is.null(content$followers$total), content$followers$total, NA)
+    #genres <- ifelse(!is.null(content$genres), paste(content$genres, collapse = ", "), "")
+    
+    #return(list(popularity = popularity, followers = followers, genres = genres))
+#}
+```
+
+```{r}
+# Function to log messages with timestamp
+  #log_message <- function(message) {
+  #cat("[", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "] ", message, "\n", sep = "")
+ #}
+
+# Start of the loop to fetch data for each artist
+ #for (i in 1:nrow(full_artist_data)) {
+  #artist_name <- full_artist_data$Artist[i]
+  #artist_id <- full_artist_data$Spotify_ID[i] 
+
+  # Log the start of processing for each artist
+  #log_message(paste("Processing artist", i, "/", nrow(full_artist_data), ": ", artist_name))
+
+  # Check if the artist ID is available
+  #if (!is.na(artist_id)) {
+    # Fetch artist data from Spotify
+    #log_message(paste("Fetching data for artist ID:", artist_id))
+    #artist_data <- tryCatch({
+      #get_artist_data(artist_id, access_token)
+    #}, error = function(e) {
+      #log_message(paste("Error fetching data for artist ID:", artist_id, "Error:", e$message))
+      #NULL  # Return NULL in case of error
+    #})
+
+    # Check if data was successfully retrieved
+    #if (!is.null(artist_data) && all(c("popularity", "followers", "genres") %in% names(artist_data))) {
+      #full_artist_data$Popularity[i] <- artist_data$popularity
+      #full_artist_data$Followers[i] <- artist_data$followers
+      #full_artist_data$Genres[i] <- artist_data$genres
+      #log_message(paste("Successfully updated data for:", artist_name))
+    #} else {
+      #log_message(paste("No data found or incomplete data for:", artist_name))
+    #}
+  #} else {
+    #log_message(paste("No Spotify ID found for:", artist_name))
+  #}
+#}
+
+ # Log completion of the process
+#log_message("Data fetching process completed.")
+```
+
+```{r}
+# Rank artists based on Spotify Popularity and Followers
+ #full_artist_data <- full_artist_data %>%
+    #arrange(desc(Popularity), desc(Followers)) %>%
+    #mutate(Spotify_Rank = row_number())
+
+# Reorder the dataframe by the original order
+ #full_artist_data <- full_artist_data[order(full_artist_data$`Rolling_Stones_Rank`),]
+
+# Calculate Change in Rank
+#full_artist_data$Change_in_Rank <- full_artist_data$Rolling_Stones_Rank - full_artist_data$Spotify_Rank
+#Arranging according to Change in Rank
+ #full_artist_data <- full_artist_data %>% arrange(desc(Change_in_Rank))
+
+# Add a new column 'Spotify_Year' with the value 2023 for all rows
+ #full_artist_data$Spotify_Rank_Year <- 2023
+```
+
+```{r}
+#write.csv(full_artist_data, "spotify_data.csv", row.names = FALSE)
+```
+
+```{r}
+# Reading data back
+full_spotify_data <- read.csv("spotify_data.csv", stringsAsFactors = FALSE, check.names = FALSE)
+```
+
+```{r}
+
+#Selecting a sample of 30 artists to analyse their audio features 
+
+# Sort and select artists
+ #top_increase <- full_spotify_data %>% arrange(desc(Change_in_Rank)) %>% head(10)
+ #top_decrease <- full_spotify_data %>% arrange(Change_in_Rank) %>% head(10)
+ #least_change <- full_spotify_data %>% arrange(abs(Change_in_Rank)) %>% head(10)
+
+# Combine the selected artists
+ #selected_artists <- rbind(top_increase, top_decrease, least_change)
+
+
+# Initialize an empty dataframe for average features
+ #average_features <- data.frame(Spotify_ID = character(),
+                               #Valence = numeric(),
+                               #Speechiness = numeric(),
+                               #Danceability = numeric(),
+                               #stringsAsFactors = FALSE)
+
+# Function to safely get audio features and compute averages
+ #get_and_average_features <- function(Spotify_ID) {
+    #tryCatch({
+        #message("Processing Spotify ID: ", Spotify_ID)  # Print the current ID being processed
+        #features <- get_artist_audio_features(Spotify_ID)
+        
+        #data.frame(Spotify_ID = Spotify_ID,
+                   #Valence = mean(features$valence, na.rm = TRUE),
+                   #Speechiness = mean(features$speechiness, na.rm = TRUE),
+                   #Danceability = mean(features$danceability, na.rm = TRUE))
+    #}, error = function(e) {
+        #message("Error for artist ID ", Spotify_ID, ": ", e$message)
+        #NULL # Return NULL in case of error
+    #})
+ #}
+
+# Apply function to each selected artist
+ #for (Spotify_ID in selected_artists$Spotify_ID) {
+    #avg_features <- get_and_average_features(Spotify_ID)
+    #if (!is.null(avg_features)) {
+        #average_features <- rbind(average_features, avg_features)
+    #}
+#}
+
+```
+
+```{r}
+# Merge the dataframes based on Spotify_ID
+#spotify_sample_data <- merge(full_spotify_data, average_features, by = "Spotify_ID")
+```
+
+```{r}
+#write.csv(spotify_sample_data, "spotify_sample_data.csv", row.names = FALSE)
+```
+
+```{r}
+# Define the web scraping function for a single table
+process_table <- function(table_node) {
+  # Extract the entire table and convert it to a data frame
+  table <- html_table(table_node, fill = TRUE, header = TRUE)[[1]]
+
+  # Check if the table is a data frame
+  if (!is.data.frame(table)) {
+    return(NULL)
+  }
+
+  # Select only the needed columns by their actual names in the table
+  if (all(c("Artist", "Period active", "Release-year of first charted record", "Genre", "Total certified units(from available markets)[b]", "Claimed sales") %in% colnames(table))) {
+    table <- table %>%
+      select(Artist, `Period active`, `Release-year of first charted record`, Genre, `Total certified units(from available markets)[b]`, `Claimed sales`)
+  } else {
+    return(NULL)
+  }
+
+  return(table)
+}
+
+# URL of the Wikipedia page for best-selling music artists
+wiki_url <- "https://en.wikipedia.org/wiki/List_of_best-selling_music_artists"
+
+# Read the HTML content from the URL
+page <- read_html(wiki_url)
+
+# Find all tables with the class 'wikitable'
+tables <- html_nodes(page, "table.wikitable")
+
+# Extract specific tables (e.g., the first two tables)
+table1 <- process_table(tables[1])
+table2 <- process_table(tables[2])
+table3 <- process_table(tables[3])
+table4 <- process_table(tables[4])
+table5 <- process_table(tables[5])
+table6 <- process_table(tables[6])
+
+# Combine all the tables
+combined_wiki_tables <- bind_rows(table1, table2, table3, table4, table5, table6)
+
+```
+
+```{r}
+# Function to clean up the 'Period active' column
+ clean_period_active <- function(period) {
+  period <- gsub("\\[.*?\\]", "", period)  # Remove content in brackets
+  period <- gsub("present", "2023", period) # Replace 'present' with '2023'
+  period
+ }
+
+# Function to clean up the 'Release-year of first charted record' column
+ clean_release_year <- function(year) {
+  str_extract(year, "\\d{4}") # Extract the first four-digit number
+ }
+
+ # Function to clean up the 'Genre' column
+ clean_genre <- function(genre) {
+ gsub("\\[.*?\\]", "", genre) # Remove content in brackets
+}
+
+ # Function to clean up the 'Total certified units' column
+clean_total_units <- function(units) {
+  str_extract(units, "\\d+\\.?\\d*") # Extract the first number (integer or decimal)
+}
+
+ # Function to clean up the 'Claimed sales' column
+clean_claimed_sales <- function(sales) {
+   # Extract the first number (integer or decimal)
+  as.numeric(str_extract(sales, "\\d+\\.?\\d*")) 
+}
+
+# Rename the 'Total certified units' column and then apply the cleaning functions
+cleaned_wiki_table <- combined_wiki_tables %>%
+  rename(`Total certified units (US Million)` = `Total certified units(from available markets)[b]`,
+         `Claimed sales (US Million)` = `Claimed sales`) %>%
+  mutate(`Period active` = clean_period_active(`Period active`),
+         `Release-year of first charted record` = clean_release_year(`Release-year of first charted record`),
+         Genre = clean_genre(Genre),
+         `Total certified units (US Million)` = clean_total_units(`Total certified units (US Million)`),
+         `Claimed sales (US Million)` = clean_claimed_sales(`Claimed sales (US Million)`))
+
+```
+
+```{r}
+# Excluding the genres column since we already have that information from Spotify 
+
+# Selecting the desired columns from wiki_data (excluding 'Genre')
+wiki_data_selected <- select(cleaned_wiki_table, -Genre)
+
+# Performing a left join with the modified wiki_data
+combined_data <- left_join(full_spotify_data, wiki_data_selected, by = "Artist")
+```
+
+
+```{r}
+cleaned_data <- combined_data
+
+# Clean 'Period Active'
+cleaned_data <- cleaned_data %>%
+  mutate(
+    Start_Year = as.numeric(str_extract(`Period active`, "^[0-9]{4}")),
+    End_Year = as.numeric(str_extract(`Period active`, "[0-9]{4}$"))
+  )
+
+group_genre <- function(genre) {
+   if (str_detect(genre, "classic|glam")) {
+    return("Classic Rock")
+  } else if (str_detect(genre, "g funk|hip hop|rap|r&b")) {
+    return("HipHop_R&B_Rap")
+  } else if (str_detect(genre, "alternative|indie|soft rock|irish rock|grunge")) {
+    return("Alternative Rock")
+  } else if (str_detect(genre, "hard|metal")) {
+    return("Hard Rock/Metal")
+  } else if (str_detect(genre, "punk")) {
+    return("Punk Rock")
+  } else if (str_detect(genre, "rock-and-roll")) {
+    return("Rock and Roll")
+  } else if (str_detect(genre, "piano rock")) {
+    return("Piano Rock")
+  } else if (str_detect(genre, "blues")) {
+    return("Blues")
+  } else if (str_detect(genre, "funk")) {
+    return("Funk")
+  } else if (str_detect(genre, "reggae")) {
+    return("Reggae")
+  } else if (str_detect(genre, "pop")) {
+    return("Pop")
+  } else if (str_detect(genre, "soul")) {
+    return("Soul")
+  } else if (str_detect(genre, "country")) {
+    return("Country")
+  } else {
+    return("Other")
+  }
+}
+
+# Apply the function to the 'Genres' column
+cleaned_data <- cleaned_data %>%
+  mutate(Grouped_Genre = sapply(Genres, group_genre))
+
+
+# Create 'Period Active' as a new column in 'Start_Year - End_Year' format
+cleaned_data <- cleaned_data %>%
+  mutate(Period_Active = paste(Start_Year, End_Year, sep = " - "))
+
+# Replace NA with appropriate representation if needed
+cleaned_data$Period_Active[is.na(cleaned_data$Start_Year) | is.na(cleaned_data$End_Year)] <- "NA"
+
+# Rearranging columns in the specified order
+f_data <- cleaned_data %>%
+  select(
+    Artist,
+    Rolling_Stones_Rank,
+    RS_Rank_Year,
+    Spotify_Rank,
+    Spotify_Rank_Year,
+    Change_in_Rank,
+    Popularity,
+    Followers,
+    Period_Active,
+    `Release-year of first charted record`,
+    `Total certified units (US Million)`,
+    `Claimed sales (US Million)`,
+    Grouped_Genre
+    
+  )
+```
+
+```{r}
+# Reading data back
+spotify_sample_data <- read.csv("spotify_sample_data.csv", stringsAsFactors = FALSE, check.names = FALSE)
+
+#Select Required Columns
+spotify_selected <- select(spotify_sample_data, Artist, Valence, Danceability, Speechiness)
+
+# Merge the datasets using a full join
+merged_data <- merge(f_data, spotify_selected, by = "Artist", all.x = TRUE)
+```
+
+```{r}
+write.csv(merged_data, "final_data.csv", row.names = FALSE)
+```
+
+### Figure 1: "Genre Popularity Trends: 2010 vs. 2023"
+```{r}
+# Reading data back
+final_data <- read.csv("final_data.csv", stringsAsFactors = FALSE, check.names = FALSE)
+
+
+genre_data <- final_data %>% 
+  group_by(Grouped_Genre) %>% 
+  summarise(Average_RS_rank = mean(Rolling_Stones_Rank),
+            Average_spotify_rank = mean(Spotify_Rank))
+
+# Reshape data to long format
+grouped_data_long <- genre_data %>%
+  pivot_longer(cols = c(Average_RS_rank, Average_spotify_rank), names_to = "RankType", values_to = "Rank")
+grouped_data_long$RankType <- as.factor(grouped_data_long$RankType)
+
+# Reshape data to long format
+grouped_data_long %>% 
+  ggplot(aes(x = RankType, y = Rank, group = Grouped_Genre, color = Grouped_Genre)) + # Map aesthetics globally
+  geom_line() + # Ensure lines are drawn
+  geom_point() +
+  geom_text_repel(aes(label = Grouped_Genre), nudge_y = 1) +
+  labs(title = "Genre Popularity Trends: 2010 vs. 2023",
+       x = "Time",
+       y = "Rank") +
+  scale_x_discrete(labels = c("2010", "2023")) +
+  scale_y_continuous(breaks = seq(0, max(grouped_data_long$Rank, na.rm = TRUE) + 5, 5)) +
+  scale_y_reverse() +
+  guides(color = guide_legend(override.aes = list(linetype = "solid"))) # Override legend to show solid lines
+```
+
+### Figure 2: "Artists with Rising Popularity from 2021 to 2023"
+```{r}
+# Top 20 artists with max increase in rank
+max_increase <- final_data %>%
+  top_n(10, Change_in_Rank)
+
+# Visualizations
+ggplot(max_increase, aes(x = reorder(Artist, Change_in_Rank), y = Change_in_Rank, fill = Grouped_Genre)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Artists with Maximum Increase in Rank",
+       x = "Artist",
+       y = "Change in Rank",
+       fill = "Genre") + # This changes the legend title for `fill`
+  coord_flip()
+```
+
+### Figure 3: "Artists with Falling Popularity from 2021 to 2023"
+```{r}
+# Top 20 artists with max decrease in rank
+max_decrease <- final_data %>%
+  top_n(10, desc(Change_in_Rank))
+
+# Visualizations
+ggplot(max_decrease, aes(x = reorder(Artist, Change_in_Rank), y = Change_in_Rank, fill = Grouped_Genre)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Artists with Maximum Decrease in Rank",
+       x = "Artist",
+       y = "Change in Rank",
+       fill = "Genre") + # This changes the legend title for `fill`
+  coord_flip()
+```
+
+
+### Figure 4: "Artists with Steady Popularity from 2021 to 2023"
+```{r}
+# Artist with least change in rank 
+
+least_change <- final_data %>%
+  filter(abs(Change_in_Rank)<=4)
+
+# Visualizations
+ggplot(least_change, aes(x = reorder(Artist, Change_in_Rank), y = Change_in_Rank, fill = Grouped_Genre)) +
+  geom_bar(stat = "identity", position = "identity", width = 0.5) +
+  labs(title = "Artists with Least Change in Rank",
+       x = "Artist",
+       y = "Change in Rank",
+       fill = "Genre") + 
+  coord_flip() +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 10), limits = c(-4, 4)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+  theme_minimal() +
+  # This will add a small bar for artists with zero change in rank
+  geom_bar(data = subset(least_change, Change_in_Rank == 0), aes(y = 0.1), stat = "identity", position = "identity", width = 0.5) +
+  geom_bar(data = subset(least_change, Change_in_Rank == 0), aes(y = -0.1), stat = "identity", position = "identity", width = 0.5)
+
+```
+
+
+### Figure 5: "Average Audio Features for Artists that increased in Popularity vs. Artists that decreased in popularity
+```{r}
+# Create the 'Group' column
+final_data$Group <- ifelse(final_data$Change_in_Rank > 0, 'Increase',
+                           ifelse(final_data$Change_in_Rank < 0, 'Decrease', 'Constant'))
+
+# Filter the data to include only the 'Increase' and 'Decrease' groups and exclude rows with NA in audio features
+filtered_data <- final_data %>%
+  filter(Group %in% c('Increase', 'Decrease') & !is.na(Valence) & !is.na(Danceability) & !is.na(Speechiness))
+
+# Bar Plots for Audio Features
+
+filtered_data %>%
+  group_by(Group) %>%
+  summarise(Avg_Valence = mean(Valence, na.rm = TRUE),
+            Avg_Danceability = mean(Danceability, na.rm = TRUE),
+            Avg_Speechiness = mean(Speechiness, na.rm = TRUE)) %>%
+  gather(key = "Feature", value = "Average", -Group) %>%
+  ggplot(aes(x = Group, y = Average, fill = Feature)) +
+  geom_bar(stat = "identity", position = position_dodge()) +
+  labs(title = 'Average Audio Features for Artists that increased in Popularity\n vs. Artists that decreased in popularity', 
+       x = 'Group', 
+       y = 'Average Value',
+       fill = 'Audio Feature') +  
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+
+### Figure 6: Correlation Matrix of Artist Popularity, Followers, and Audio Features
+```{r}
+# Convert relevant columns to numeric if they are not already
+numeric_data <- filtered_data[, c('Valence', 'Danceability', 'Speechiness', 'Popularity', 'Followers')]
+numeric_data[] <- lapply(numeric_data, function(x) as.numeric(as.character(x)))
+
+# Calculate the correlation matrix
+correlation_data <- cor(numeric_data, use = "complete.obs")
+
+# Function to calculate p-values of correlations
+cor_pvalues <- function(correlation_matrix, data) {
+  n <- ncol(correlation_matrix)
+  p_matrix <- matrix(NA, n, n)
+  diag(p_matrix) <- 0
+  
+  for (i in 1:(n-1)) {
+    for (j in (i+1):n) {
+      test <- cor.test(data[,i], data[,j])
+      p_matrix[i,j] <- test$p.value
+      p_matrix[j,i] <- test$p.value
+    }
+  }
+  return(p_matrix)
+}
+
+# Get the p-values
+p_values <- cor_pvalues(correlation_data, numeric_data)
+
+# Plot the correlation matrix with corrplot
+corrplot(correlation_data, method = "color", type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45, 
+         col = colorRampPalette(c("#BB0000", "#EEAAAA", "#FFFFFF", "#AAAAEE", "#0000BB"))(200))
+```
+
+# Analysis and Visualisation 
+
+Our analysis aimed to decipher the dynamics in artist rankings and to unearth any patterns in audio characteristics (like danceability, valence, speechiness) over time. We also scrutinized the evolution of music genres from 2010 to 2023.
+
+**Genre Trends:** Figure 1 graphically represents the resilience of various genres, with a reversed Y-axis indicating the shift in ranks (where 1 denotes the highest position).
+
+Significantly, R&B and hip-hop have surged in popularity, moving into the mainstream and reshaping the global popular culture soundscape. This transition has played a pivotal role in the burgeoning of a billion-dollar entertainment sector. The advent of streaming services has particularly empowered rappers, providing them with a platform to reach vast audiences.
+Conversely, blues and funk have seen a decline, drifting away from mainstream appeal.
+Classic rock, on the other hand, demonstrates notable steadiness, underlining its timeless allure. This genre remains a perennial favourite across generations, cementing its status as a benchmark of musical excellence.
+
+**Rank Increase:** As illustrated in Figure 2, certain artists have ascended in rank. Artists like Jay Z and Eminem have released a substantial amount of new music since 2010, likely boosting their rankings. Timeless artists like Tupac and REM, who are icons in their respective genres, continue to captivate new generations of listeners.
+
+**Rank Decrease:** Figure 3 highlights artists who have experienced a drop in rank, potentially due to shifts in musical preferences or a diminished digital footprint.
+
+**Consistent Ranking:** Figure 4 showcases artists maintaining a steady rank, indicative of either sustained popularity or a dedicated, loyal fan base.
+
+**Audio Features Insights:** Figure 5 delves deeper into the persistence of audio features like speechiness, valence, and danceability over the years. Even though the difference is not too significant, it is interesting to note that artists with higher danceability and speechiness have reduced in popularity and vice versa. 
+
+**Relationship between valence and popularity:** Figure 6, a correlation matrix, elucidates the interplay between various musical attributes such as popularity, follower count, valence, danceability, and speechiness. The varying shades of blue and red represent the intensity and nature of the correlation between these elements. Blue signifies a positive correlation, while red indicates a negative one. This analysis suggests that songs with lower valence, often embodying more somber emotions, tend to be more popular. This preference might reflect a listener inclination towards music that portrays complex, profound, or realistic emotions, as opposed to consistently upbeat or cheerful tunes.
+
+# Issues
+Several challenges arose during the analysis:
+
+**Genre Discrepancies:** We observed inconsistencies between genre classifications from Wikipedia and Spotify. We favoured Spotify's genre data due to its current and regularly updated nature. 
+
+**Simplification in Genre Grouping:** Certain artists were linked to multiple genres, necessitating the selection of one primary genre to enhance clarity in our visualizations. Genres are also dynamic; for example, blues and funk have evolved and contributed significantly to R&B. This complexity makes it challenging to analyze genres solely based on music popularity data.
+
+**Lack of Historical Data:** Spotify's lack of historical data restricted our ability to conduct a thorough time-series analysis.
+
+**Artist Name Variations:** Inconsistencies, such as the listing of "Parliament" and "Funk" on Spotify versus "Parliament Funk," necessitated manual corrections.
+
+**Limited data:** A significant hurdle in our analysis was the restricted availability of data for all artists on Rolling Stone's 100 Greatest Artists list. Despite utilizing Wikipedia, which is generally comprehensive, the specificity of Rolling Stone's list meant that complete data for every artist was not always accessible. This limitation impeded our ability to use Wikipedia data for exhaustive visualizations, thereby constraining a full representation of the artists in our analysis.
+
+
+# Future Research 
+For future research, investigating the influence of social media and emerging platforms on artist popularity would be insightful. Additionally, analyzing the role of global music trends in shaping an artist's longevity could provide deeper insights into the evolving landscape of musical legacy.
+
+
+# Code Appendix
+To ensure replicability, the original code used for data collection is provided here, commented out to prevent re-execution.
+
+
 ```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE} 
+
+```
+
+
+
