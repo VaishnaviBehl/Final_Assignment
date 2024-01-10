@@ -7,7 +7,6 @@ output: html_document
 
 # Link to my public repo: [Final Assignment Repo](https://github.com/VaishnaviBehl/final_assignment)
 
-
 # Introduction 
 This study assesses the longevity of music created by artists featured in Rolling Stone Magazine's list of the 100 greatest musical artists of 2010. By integrating data from Rolling Stone, Spotify’s Web API, and Wikipedia, our research aims to identify trends in musical genres and the attributes that contribute to an artist's enduring popularity. Our objective is to determine if there are observable trends in the shifting popularity of various genres, and to explore whether certain musical characteristics (such as positive versus negative themes, danceability, or the inclusion of spoken word) influence an artist's popularity.
 
