@@ -1,7 +1,7 @@
 ---
 title: "Final Assignment"
 author: "Vaishnavi Behl"
-date: "2023-12-18"
+date: "2024-01-10"
 output: html_document
 ---
 
@@ -716,9 +716,11 @@ Several challenges arose during the analysis:
 
 **Lack of Historical Data:** Spotify's lack of historical data restricted our ability to conduct a thorough time-series analysis.
 
-**Artist Name Variations:** Inconsistencies, such as the listing of "Parliament" and "Funk" on Spotify versus "Parliament Funk," necessitated manual corrections.
+**Artist Name Variations:** Inconsistencies, such as the listing of "Parliament and Funk" on Spotify versus "Parliament Funk," necessitated manual corrections.
 
 **Limited data:** A significant hurdle in our analysis was the restricted availability of data for all artists on Rolling Stone's 100 Greatest Artists list. Despite utilizing Wikipedia, which is generally comprehensive, the specificity of Rolling Stone's list meant that complete data for every artist was not always accessible. This limitation impeded our ability to use Wikipedia data for exhaustive visualizations, thereby constraining a full representation of the artists in our analysis.
+
+**Cultural and Geographical Bias:** Rolling Stone’s list reflects critics' choices predominantly from the U.S., whereas Spotify's global user data offers a more diverse perspective. This distinction likely contributes to discrepancies between the two sources.
 
 
 # Future Research 
